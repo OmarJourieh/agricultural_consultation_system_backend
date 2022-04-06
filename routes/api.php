@@ -1,12 +1,18 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DiseasesController;
 use App\Http\Controllers\PlantsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\User;
 use App\Models\Plant;
 use App\Models\Disease;
+use App\Models\Post;
+use App\Models\Comment;
+use App\Models\PlantSchedule;
+use App\Models\UserPlant;
 
 
 /*
@@ -33,7 +39,7 @@ Route::post('/tokens/create', function (Request $request) {
 
 Route::get('/test', function() {
     $p = Plant::find(1);
-    return $p->diseases;
+    return $p->diseases[0]->plant;
 });
 
 
@@ -44,3 +50,7 @@ Route::get('/getPlantById/{id}', [PlantsController::class,'getPlantById']);
 
 //Diseases Controller
 Route::get('/getDiseasesOfPlant/{id}', [DiseasesController::class,'getDiseasesOfPlant']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+

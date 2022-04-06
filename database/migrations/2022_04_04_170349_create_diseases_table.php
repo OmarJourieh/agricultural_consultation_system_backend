@@ -17,9 +17,9 @@ class CreateDiseasesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->integer('plant_id')->nullable();
-            $table->string('description')->nullable();
-            $table->string('symptoms')->nullable();
-            $table->string('cure')->nullable();
+            $table->text('description')->nullable();
+            $table->text('symptoms')->nullable();
+            $table->text('cure')->nullable();
             $table->timestamps();
         });
     }
