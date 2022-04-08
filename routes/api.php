@@ -43,14 +43,25 @@ Route::get('/test', function() {
 });
 
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+
 //Plants Controller
 Route::get('/getAllPlants', [PlantsController::class,'getAllPlants']);
 Route::get('/getPlantById/{id}', [PlantsController::class,'getPlantById']);
-
+Route::get('/getPlantSchedule/{id}', [PlantsController::class,'getPlantSchedule']);
+Route::get('/startPlantation/{user_id}/{plant_id}', [PlantsController::class,'startPlantation']);
 
 //Diseases Controller
 Route::get('/getDiseasesOfPlant/{id}', [DiseasesController::class,'getDiseasesOfPlant']);
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+
+//FORUM
+Route::get('/getAllPosts', [ForumController::class, 'getAllPosts']);
+Route::get('/getSinglePost/{post_id}', [ForumController::class, 'getSinglePost']);
+Route::post('/addPost', [ForumController::class, 'addPost']);
+Route::post('/addComment/{post_id}', [ForumController::class, 'add']);
+
+
 
