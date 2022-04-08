@@ -63,5 +63,3 @@ Route::get('/getSinglePost/{post_id}', [ForumController::class, 'getSinglePost']
 Route::post('/addPost', [ForumController::class, 'addPost']);
 Route::post('/addComment/{post_id}', [ForumController::class, 'add']);
 
-
-
