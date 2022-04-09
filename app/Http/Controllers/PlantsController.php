@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Interfaces\PlantRepositoryInterface;
 use Illuminate\Http\Request;
-
-use App\Models\Disease;
 use App\Models\Plant;
 use App\Models\PlantSchedule;
 use App\Models\UserPlant;
 
 class PlantsController extends Controller
 {
+     private  $plantRepository;
+
+    public function __construct(PlantRepositoryInterface $plantRepository)
+    {
+        $this->plantRepository = $plantRepository;
+    }
+
     protected function getAllPlants() {
-        return Plant::all();
+        return $this->plantRepository->all();
+
+       // return Plant::all();
     }
 
     protected function getPlantById($id) {
