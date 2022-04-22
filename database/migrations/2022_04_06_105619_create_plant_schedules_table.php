@@ -15,11 +15,13 @@ class CreatePlantSchedulesTable extends Migration
     {
         Schema::create('plant_schedules', function (Blueprint $table) {
             $table->id();
-            $table->integer('plant_id')->nullable();
-            $table->integer('interval')->nullable();   //day number
-            $table->string('description')->nullable();
-            $table->boolean('is_repeating')->nullable();
+            $table->bigInteger('plant_id')->unsigned();
+            $table->string('title');
+            $table->string('image')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
         });
     }
 

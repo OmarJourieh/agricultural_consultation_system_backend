@@ -16,4 +16,8 @@ class Plant extends Model
     protected function diseases() {
         return $this->hasMany(Disease::class, 'plant_id', 'id');
     }
+
+    public  function  plantSchedules(){
+        return $this->hasMany(PlantSchedule::class);
+    }
 }

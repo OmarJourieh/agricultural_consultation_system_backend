@@ -3,7 +3,10 @@
 
 namespace App\Repositories;
 use \App\Http\Interfaces\RepositoryInterface;
+
 use Illuminate\Database\Eloquent\Model;
+use mysql_xdevapi\Exception;
+
 
 class Repository implements RepositoryInterface
 {
@@ -24,13 +27,27 @@ class Repository implements RepositoryInterface
 
     public function create(array $data)
     {
-        return $this->model->create($data);
+        try {
+            return $this->model->create($data);
+
+        }catch (\Exception $e){
+
+           return null;
+        }
+
     }
 
     public function update(array $data, $id)
     {
-        $record = $this->find($id);
-        return $record->update($data);
+        try {
+            $record = $this->model->find($id);
+            if($record != null)
+            return $record->update($data);
+
+        }catch (Exception $e){
+            return null;
+        }
+
     }
 
     public function delete($id)
@@ -63,7 +80,7 @@ class Repository implements RepositoryInterface
     }
 
     public  function  getOne($id){
-        return $this->find($id);
+        return $this->model->find($id);
 
     }
 
