@@ -13,7 +13,15 @@ class Post extends Model
 
     protected $guarded = [];
 
-    protected function user() {
-        return $this->hasOne(User::class, 'id', 'user_id');
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }
