@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Interfaces\DiseasesRepositoryInterface;
 use App\Http\Requests\DiseaseRequest;
 use App\Http\Requests\PlantRequest;
+use App\Models\Stage;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use App\Models\Plant;
@@ -74,6 +75,21 @@ class DiseasesController extends Controller
 
     }
 
+    protected function getDiseasesByPlant($id){
+        $plant=Plant::find($id);
+        if(!$plant){
+            return $this->returnError("400","The plant  does not exist");
 
+        }else{
+            $res = $plant->Diseases()->get();
+            return $this->returnData('diseases',$res);
+        }
+    }
+
+    protected function getDiseasesByStage($id){
+        $plant=Stage::with('Diseases')->where('plant_id',$id)->get();
+           return $this->returnData('diseases',$plant);
+
+    }
 
 }

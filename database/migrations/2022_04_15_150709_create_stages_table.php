@@ -15,10 +15,14 @@ class CreateStagesTable extends Migration
     {
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('plant_id')->unsigned();
             $table->string('name');
             $table->string('interval')->nullable();
             $table->text('description')->nullable();
+            $table->integer('step');
             $table->timestamps();
+            $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
+
         });
     }
 

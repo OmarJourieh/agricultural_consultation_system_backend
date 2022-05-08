@@ -8,6 +8,7 @@ use App\Http\Controllers\PlantsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\StepController;
+use App\Http\Controllers\WeatherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -65,7 +66,7 @@ Route::get('/getAllStep/{id}', [PlantsController::class,'getAllStep']);
 
 Route::get('/getPlantSchedule/{id}', [PlantsController::class,'getPlantSchedule']);
 Route::get('/startPlantation/{user_id}/{plant_id}', [PlantsController::class,'startPlantation']);
-
+Route::get('/getPlantByUser/{id}', [PlantsController::class,'getPlantByUser']);
 //Diseases Controller
 Route::get('/getDiseasesOfPlant/{id}', [DiseasesController::class,'getDiseasesOfPlant']);
 Route::get('/getAllDiseases', [DiseasesController::class,'getAllDiseases']);
@@ -73,7 +74,8 @@ Route::get('/getDiseaseById/{id}', [DiseasesController::class,'getDiseaseById'])
 Route::post('/addDisease', [DiseasesController::class,'addDisease']);
 Route::post('/deleteDisease/{id}', [DiseasesController::class,'deleteDisease']);
 Route::post('/updateDiseases/{id}', [DiseasesController::class,'updateDiseases']);
-
+Route::get('/getDiseasesByPlant/{id}', [DiseasesController::class,'getDiseasesByPlant']);
+Route::get('/getDiseasesByStage/{id}', [DiseasesController::class,'getDiseasesByStage']);
 ///////PostController
 Route::get('/getAllPosts', [PostController::class,'getAllPosts']);
 Route::get('/getPostById/{id}', [PostController::class,'getPostById']);
@@ -109,6 +111,8 @@ Route::get('/getStageById/{id}', [StageController::class,'getStageById']);
 Route::post('/addStage', [StageController::class,'addStage']);
 Route::post('/deleteStage/{id}', [StageController::class,'deleteStage']);
 Route::post('/updateStage/{id}', [StageController::class,'updateStage']);
+Route::get('/getallStageWithStep/{id}', [StageController::class,'getallStageWithStep']);
+
 ///////////////////StepController/////////
 
 Route::get('/getAllSteps', [StepController::class,'getAllSteps']);
@@ -117,6 +121,9 @@ Route::post('/addStep', [StepController::class,'addStep']);
 Route::post('/deleteStep/{id}', [StepController::class,'deleteStep']);
 Route::post('/updateStep/{id}', [StepController::class,'updateStep']);
 
+//////////////////////////////////////////////WeatherController///////////
+
+Route::get('/currentWeather', [WeatherController::class,'currentWeather']);
 
 //FORUM
 //Route::get('/getAllPosts', [ForumController::class, 'getAllPosts']);

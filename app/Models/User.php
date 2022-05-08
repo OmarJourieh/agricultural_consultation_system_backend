@@ -53,6 +53,10 @@ public  function  posts(){
         return $this->hasMany(Comment::class);
     }
 
+    public function Plants(){
+        return $this->belongsToMany(Plant::class)->withPivot(['is_finished']);
+    }
+
 
 
 }

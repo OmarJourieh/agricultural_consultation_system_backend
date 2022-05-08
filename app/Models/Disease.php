@@ -12,8 +12,12 @@ class Disease extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $hidden = ['pivot'];
 
-    protected function plant() {
-        return $this->hasOne(Plant::class, 'id', 'plant_id');
+    public function Plants(){
+        return $this->belongsToMany(Plant::class, 'disease_plant');
+    }
+    public function Stages(){
+        return $this->belongsToMany(Stage::class, 'disease_stage');
     }
 }

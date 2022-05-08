@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Interfaces\PlantRepositoryInterface;
 use App\Http\Requests\PlantRequest;
 use App\Models\Step;
+use App\Models\User;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use App\Models\Plant;
@@ -112,7 +113,9 @@ class PlantsController extends Controller
             $plantSchedules =$plant->plantSchedules()->get();
             foreach ($plantSchedules as $key => $value){
            $res =PlantSchedule::where('id',$value['id'])->get();
-           $step = Step::where('plant_schedule_id',$res[0]['id'])->get();
+           $step = Step::with(['stage'=>function ($q){
+
+           }])->where('plant_schedule_id',$res[0]['id'])->get();
              $arr[]=$step;
             }
 
@@ -122,6 +125,12 @@ class PlantsController extends Controller
 
         }
 
+    }
+
+    public  function getPlantByUser($id){
+        $user = User::find($id);
+        $res = $user->Plants()->with('Diseases')->get();
+        return $this->returnData('Steps',$res);
     }
 
 }
