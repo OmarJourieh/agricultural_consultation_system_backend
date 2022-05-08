@@ -16,10 +16,14 @@ class CreateDiseasesTable extends Migration
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->integer('plant_id')->nullable();
             $table->text('description')->nullable();
             $table->text('symptoms')->nullable();
-            $table->text('cure')->nullable();
+            $table->text('chemical_cure')->nullable();
+            $table->text('organic_cure')->nullable();
+            $table->text('recommendations')->nullable();
+            $table->text('reason')->nullable();
+            $table->text('protection')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

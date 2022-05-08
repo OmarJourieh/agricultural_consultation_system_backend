@@ -13,11 +13,19 @@ class Plant extends Model
 
     protected $guarded = [];
 
-    protected function diseases() {
-        return $this->hasMany(Disease::class, 'plant_id', 'id');
+
+    public function Diseases(){
+        return $this->belongsToMany(Disease::class, 'disease_plant');
     }
 
     public  function  plantSchedules(){
         return $this->hasMany(PlantSchedule::class);
+    }
+
+    public  function stages(){
+        return $this->hasMany(Stage::class);
+    }
+    public function Users(){
+        return $this->belongsToMany(User::class)->withPivot('is_finished');;
     }
 }

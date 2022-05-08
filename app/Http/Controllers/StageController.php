@@ -6,6 +6,8 @@ use App\Http\Interfaces\CommentRepositoryInterface;
 use App\Http\Interfaces\StageRepositoryInterface;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\StageRequest;
+use App\Models\Plant;
+use App\Models\Stage;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 
@@ -68,6 +70,18 @@ class StageController extends Controller
         return $this->returnSuccessMessage("Stage Update successfully");
 
     }
+
+    protected function getallStageWithStep($id){
+        $plant=Plant::find($id);
+        if(!$plant){
+            return $this->returnError("400","This Plant does not exist");
+        }else{
+        $Stages = Stage::with(['steps'=>function($query){
+            return $query->orderBy('interval', 'ASC');
+        }])->where('plant_id',$plant->id)->orderBy('step', 'ASC')->get();
+
+        return $this->returnData('Stages',$Stages);
+    }}
 
 
 

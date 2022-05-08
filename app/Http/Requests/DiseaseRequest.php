@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\GeneralTrait;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
 class DiseaseRequest extends FormRequest
 {
+    use GeneralTrait;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,10 +27,15 @@ class DiseaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable|string',
-            'description'=> 'nullable|string',
-            'symptoms'=> 'nullable|string',
-            'cure' => 'nullable|string'
+            'name' => 'required|string',
+            'description'=> 'nullable|text',
+            'symptoms'=> 'nullable|text',
+            'chemical_cure' => 'nullable|text',
+            'organic_cure' => 'nullable|text',
+        'recommendations' => 'nullable|text',
+         'reason' => 'nullable|text',
+         'protection' => 'nullable|text',
+            'type' => 'nullable|string',
         ];
     }
 

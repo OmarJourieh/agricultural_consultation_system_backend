@@ -28,9 +28,13 @@ class PostController extends Controller
 
     protected function getPostById($id) {
         $post= $this->postRepository->getOne($id);
-        if(!$post)
+        if(!$post){
             return $this->returnError("400","This Post does not exist");
-        return $this->returnData('post',$post);
+        }else{
+            $res = $post->with(['comments'=>function($q){
+            }])->first();
+            return $this->returnData('post',$res);
+        }
     }
 
 
