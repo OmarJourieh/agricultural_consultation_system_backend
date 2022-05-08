@@ -78,18 +78,18 @@ class DatabaseSeeder extends Seeder
 
 
         //SCHEDULES
-        $sched = PlantSchedule::create();
-        $sched->plant_id = 1;
-        $sched->interval = 1;
-        $sched->description = "Water the plant";
-        $sched->is_repeating = true;
-        $sched->save();
-        $sched = PlantSchedule::create();
-        $sched->plant_id = 1;
-        $sched->interval = 10;
-        $sched->description = "Apply fertilizer";  //just an example
-        $sched->is_repeating = false;
-        $sched->save();
+        // $sched = PlantSchedule::create();
+        // $sched->plant_id = 1;
+        // $sched->interval = 1;
+        // $sched->description = "Water the plant";
+        // $sched->is_repeating = true;
+        // $sched->save();
+        // $sched = PlantSchedule::create();
+        // $sched->plant_id = 1;
+        // $sched->interval = 10;
+        // $sched->description = "Apply fertilizer";  //just an example
+        // $sched->is_repeating = false;
+        // $sched->save();
 
     }
 }
