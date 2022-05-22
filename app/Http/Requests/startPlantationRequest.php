@@ -6,7 +6,7 @@ use App\Traits\GeneralTrait;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
-class StageRequest extends FormRequest
+class startPlantationRequest extends FormRequest
 {
     use GeneralTrait;
     /**
@@ -27,12 +27,17 @@ class StageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
             'plant_id' => 'required|numeric',
-            'step' => 'required|numeric',
-            'description' => 'nullable|string',
-            'watering_period' => 'nullable|timestamp',
-            'interval' => 'nullable|string',
+            'user_id' => 'required|numeric',
+            'stage_id' => 'nullable|numeric',
+            'is_finished ' => 'nullable|boolean',
+            'is_protected' => 'nullable|timestamp',
+            'is_clean ' => 'nullable|timestamp',
+            'watering_date ' => 'nullable|timestamp',
+            'soil_type' => 'nullable|string',
+            'long ' => 'nullable|numeric',
+            'lat' => 'nullable|numeric',
+            'area' => 'nullable|numeric',
 
         ];
     }

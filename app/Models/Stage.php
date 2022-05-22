@@ -20,4 +20,8 @@ class Stage extends Model
     public function Diseases(){
         return $this->belongsToMany(Disease::class, 'disease_stage');
     }
+    public function plantUsers()
+    {
+        return $this->hasMany(PlantUser::class);
+    }
 }

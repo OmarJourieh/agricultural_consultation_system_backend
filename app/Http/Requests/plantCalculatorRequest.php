@@ -6,7 +6,7 @@ use App\Traits\GeneralTrait;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
-class StageRequest extends FormRequest
+class plantCalculatorRequest extends FormRequest
 {
     use GeneralTrait;
     /**
@@ -27,13 +27,9 @@ class StageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'plant_id' => 'required|numeric',
-            'step' => 'required|numeric',
-            'description' => 'nullable|string',
-            'watering_period' => 'nullable|timestamp',
-            'interval' => 'nullable|string',
-
+            'area' => 'required|numeric|gt:0',
+            'length' => 'nullable|numeric|gt:0',
+            'width' => 'nullable|numeric|gt:0',
         ];
     }
 

@@ -26,6 +26,6 @@ class Plant extends Model
         return $this->hasMany(Stage::class);
     }
     public function Users(){
-        return $this->belongsToMany(User::class)->withPivot('is_finished');;
+        return $this->belongsToMany(User::class)->withPivot(['id','is_finished','is_protected','is_clean','watering_date','soil_type','long','lat','area']);
     }
 }

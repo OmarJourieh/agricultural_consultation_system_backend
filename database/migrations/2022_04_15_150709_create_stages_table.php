@@ -20,6 +20,7 @@ class CreateStagesTable extends Migration
             $table->string('interval')->nullable();
             $table->text('description')->nullable();
             $table->integer('step');
+            $table->integer('watering_period')->nullable();
             $table->timestamps();
             $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
 
