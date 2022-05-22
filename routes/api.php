@@ -59,15 +59,15 @@ Route::get('/getPlantById/{id}', [PlantsController::class,'getPlantById']);
 Route::post('/addPlant', [PlantsController::class,'addPlant']);
 Route::post('/deletePlant/{id}', [PlantsController::class,'deletePlant']);
 Route::post('/updatePlant/{id}', [PlantsController::class,'updatePlant']);
-Route::get('/getStepForBlant/{id}', [PlantsController::class,'getStepForBlant']);
+Route::get('/getTaskForBlant/{id}', [PlantsController::class,'getTaskForBlant']);
 Route::get('/getAllStep/{id}', [PlantsController::class,'getAllStep']);
+Route::get('/plantCalculator', [PlantsController::class,'plantCalculator']);
 
 
 Route::get('/getPlantSchedule/{id}', [PlantsController::class,'getPlantSchedule']);
-Route::get('/startPlantation/{user_id}/{plant_id}', [PlantsController::class,'startPlantation']);
+Route::get('/startPlantation', [PlantsController::class,'startPlantation']);
 Route::get('/getPlantByUser/{id}', [PlantsController::class,'getPlantByUser']);
 //Diseases Controller
-Route::get('/getDiseasesOfPlant/{id}', [DiseasesController::class,'getDiseasesOfPlant']);
 Route::get('/getAllDiseases', [DiseasesController::class,'getAllDiseases']);
 Route::get('/getDiseaseById/{id}', [DiseasesController::class,'getDiseaseById']);
 Route::post('/addDisease', [DiseasesController::class,'addDisease']);
@@ -122,6 +122,7 @@ Route::post('/updateStep/{id}', [StepController::class,'updateStep']);
 //////////////////////////////////////////////WeatherController///////////
 
 Route::get('/currentWeather', [WeatherController::class,'currentWeather']);
+
 
 //FORUM
 //Route::get('/getAllPosts', [ForumController::class, 'getAllPosts']);

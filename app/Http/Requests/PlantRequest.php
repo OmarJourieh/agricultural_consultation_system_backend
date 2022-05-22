@@ -35,7 +35,7 @@ class PlantRequest extends FormRequest
             'name' => 'nullable|string',
             'description'=> 'nullable|string',
             'season'=> 'nullable|string',
-            'image' => 'nullable|mimes:jpg,jpeg,png'
+            'image' => 'nullable'
 
         ];
     }

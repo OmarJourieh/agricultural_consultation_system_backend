@@ -54,7 +54,7 @@ public  function  posts(){
     }
 
     public function Plants(){
-        return $this->belongsToMany(Plant::class)->withPivot(['is_finished']);
+        return $this->belongsToMany(Plant::class)->withPivot(['id','is_finished','is_protected','is_clean','watering_date','soil_type','long','lat','area']);
     }
 
 

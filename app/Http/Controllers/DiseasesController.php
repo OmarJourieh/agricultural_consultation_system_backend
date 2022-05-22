@@ -19,11 +19,6 @@ class DiseasesController extends Controller
         $this->diseasesRepository = $plantRepository;
     }
 
-    protected function getDiseasesOfPlant($plant_id) {
-        $plant = Plant::find($plant_id);
-        return $plant->diseases;
-    }
-
 
     protected function getAllDiseases() {
         $plants = $this->diseasesRepository->all();

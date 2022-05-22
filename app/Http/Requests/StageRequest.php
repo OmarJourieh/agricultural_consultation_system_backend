@@ -28,8 +28,11 @@ class StageRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'plant_id' => 'required|numeric',
+            'step' => 'required|numeric',
             'description' => 'nullable|string',
-         'interval' => 'nullable|string',
+            'watering_period' => 'nullable|timestamp',
+            'interval' => 'nullable|string',
 
         ];
     }

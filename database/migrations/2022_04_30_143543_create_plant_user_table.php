@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePlantUserTable extends Migration
@@ -17,7 +18,15 @@ class CreatePlantUserTable extends Migration
             $table->id();
             $table->foreignId('plant_id')->constrained();
             $table->foreignId('user_id')->constrained();
-             $table->boolean('is_finished')->default(false);
+            $table->foreignId('stage_id')->constrained();
+            $table->boolean('is_finished')->default(false);
+            $table->timestamp('is_protected')->nullable();
+            $table->timestamp('is_clean')->default(Carbon::now());
+            $table->timestamp('watering_date')->default(Carbon::now());
+            $table->string('soil_type')->nullable();
+            $table->decimal('long', 10, 7)->nullable();
+            $table->decimal('lat', 10, 7)->nullable();
+            $table->integer('area')->nullable();
             $table->timestamps();
         });
     }
