@@ -21,6 +21,11 @@ class PostController extends Controller
 
     protected function getAllPosts() {
         $posts = $this->postRepository->all();
+        foreach ($posts as $post) {
+            $post['user'] = $post->user;
+            $post['comments'] = $post->comments;
+        }
+
         return $this->returnData('post',$posts);
 
 
@@ -31,9 +36,14 @@ class PostController extends Controller
         if(!$post){
             return $this->returnError("400","This Post does not exist");
         }else{
-            $res = $post->with(['comments'=>function($q){
-            }])->first();
-            return $this->returnData('post',$res);
+            $post['user'] = $post->user;
+            $comments = $post->comments;    //try
+            $post['comments'] = $post->comments;
+
+        foreach ($comments as $c) {
+            $c['user'] = $c->user;
+        }
+        return $this->returnData('post',$post);
         }
     }
 

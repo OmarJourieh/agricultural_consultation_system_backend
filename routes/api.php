@@ -51,6 +51,7 @@ Route::get('/test', function() {
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/profile', [AuthController::class, 'profile']);
 
 
 //Plants Controller
@@ -81,6 +82,7 @@ Route::get('/getPostById/{id}', [PostController::class,'getPostById']);
 Route::post('/addPost', [PostController::class,'addPost']);
 Route::post('/deletePost/{id}', [PostController::class,'deletePost']);
 Route::post('/updatePost/{id}', [PostController::class,'updatePost']);
+
 
 /////CommentController
 
